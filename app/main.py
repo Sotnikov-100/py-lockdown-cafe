@@ -13,9 +13,9 @@ def go_to_cafe(friends: list[dict], cafe: Cafe) -> str:
             return "All friends should be vaccinated"
 
     masks_to_buy = sum(
-        1 for friend in friends if not friend.get("wearing_a_mask", False)
+        not friend.get("wearing_a_mask", False) for friend in friends
     )
-    if masks_to_buy > 0:
+    if masks_to_buy:
         return f"Friends should buy {masks_to_buy} masks"
 
     try:
